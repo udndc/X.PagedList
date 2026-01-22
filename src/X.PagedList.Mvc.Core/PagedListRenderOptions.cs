@@ -43,6 +43,7 @@ public class PagedListRenderOptions
         EllipsesElementClass = "PagedList-ellipses";
         PreviousElementClass = "PagedList-skipToPrevious";
         NextElementClass = "PagedList-skipToNext";
+        PlaceFirstPageAfterPreviousAndLastPageBeforeNext = false;
     }
 
     /// <summary>
@@ -94,6 +95,11 @@ public class PagedListRenderOptions
     /// CSS Classes to append to Ellipses element in the paging control.
     /// </summary>
     public string EllipsesElementClass { get; set; }
+
+    /// <summary>
+    /// When true, renders the first-page link after the previous-page link and the last-page link before the next-page link.
+    /// </summary>
+    public bool PlaceFirstPageAfterPreviousAndLastPageBeforeNext { get; set; }
 
     /// <summary>
     /// Specifies a CSS class to append to the first list item in the pager. If null or whitespace is defined, no additional class is added to first list item in list.
