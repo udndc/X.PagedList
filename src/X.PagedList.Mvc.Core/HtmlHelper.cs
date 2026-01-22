@@ -408,18 +408,26 @@ public class HtmlHelper
             }
         }
 
-        //first
-        if (options.DisplayLinkToFirstPage == PagedListDisplayMode.Always ||
-            (options.DisplayLinkToFirstPage == PagedListDisplayMode.IfNeeded && firstPageToDisplay > 1))
-        {
-            listItemLinks.Add(First(list, generatePageUrl, options));
-        }
+        //first / previous
+        var firstLink = (options.DisplayLinkToFirstPage == PagedListDisplayMode.Always ||
+                         (options.DisplayLinkToFirstPage == PagedListDisplayMode.IfNeeded && firstPageToDisplay > 1))
+            ? First(list, generatePageUrl, options)
+            : null;
 
-        //previous
-        if (options.DisplayLinkToPreviousPage == PagedListDisplayMode.Always ||
-            (options.DisplayLinkToPreviousPage == PagedListDisplayMode.IfNeeded && !list.IsFirstPage))
+        var previousLink = (options.DisplayLinkToPreviousPage == PagedListDisplayMode.Always ||
+                            (options.DisplayLinkToPreviousPage == PagedListDisplayMode.IfNeeded && !list.IsFirstPage))
+            ? Previous(list, generatePageUrl, options)
+            : null;
+
+        if (options.PlaceFirstPageAfterPreviousAndLastPageBeforeNext)
         {
-            listItemLinks.Add(Previous(list, generatePageUrl, options));
+            if (previousLink != null) listItemLinks.Add(previousLink);
+            if (firstLink != null) listItemLinks.Add(firstLink);
+        }
+        else
+        {
+            if (firstLink != null) listItemLinks.Add(firstLink);
+            if (previousLink != null) listItemLinks.Add(previousLink);
         }
 
         //text
@@ -463,18 +471,26 @@ public class HtmlHelper
             }
         }
 
-        //next
-        if (options.DisplayLinkToNextPage == PagedListDisplayMode.Always ||
-            (options.DisplayLinkToNextPage == PagedListDisplayMode.IfNeeded && !list.IsLastPage))
-        {
-            listItemLinks.Add(Next(list, generatePageUrl, options));
-        }
+        //next / last
+        var nextLink = (options.DisplayLinkToNextPage == PagedListDisplayMode.Always ||
+                        (options.DisplayLinkToNextPage == PagedListDisplayMode.IfNeeded && !list.IsLastPage))
+            ? Next(list, generatePageUrl, options)
+            : null;
 
-        //last
-        if (options.DisplayLinkToLastPage == PagedListDisplayMode.Always ||
-            (options.DisplayLinkToLastPage == PagedListDisplayMode.IfNeeded && lastPageToDisplay < list.PageCount))
+        var lastLink = (options.DisplayLinkToLastPage == PagedListDisplayMode.Always ||
+                        (options.DisplayLinkToLastPage == PagedListDisplayMode.IfNeeded && lastPageToDisplay < list.PageCount))
+            ? Last(list, generatePageUrl, options)
+            : null;
+
+        if (options.PlaceFirstPageAfterPreviousAndLastPageBeforeNext)
         {
-            listItemLinks.Add(Last(list, generatePageUrl, options));
+            if (lastLink != null) listItemLinks.Add(lastLink);
+            if (nextLink != null) listItemLinks.Add(nextLink);
+        }
+        else
+        {
+            if (nextLink != null) listItemLinks.Add(nextLink);
+            if (lastLink != null) listItemLinks.Add(lastLink);
         }
 
         //text
