@@ -4,7 +4,7 @@
         <Title>X.PagedList.EntityFramework</Title>
         <Description>Entity Framework 6 (legacy) extensions for X.PagedList library</Description>
         <LangVersion>default</LangVersion>
-        <TargetFrameworks>net481;netstandard2.1;</TargetFrameworks>
+        <TargetFrameworks>net472;netstandard2.1</TargetFrameworks>
         <PackageTags>paging pagedlist paged list entity framework ef6</PackageTags>
     </PropertyGroup>
 
@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="EntityFramework" Version="[6.5.1,7.0.0)" />
+        <PackageReference Include="EntityFramework" Version="[6.3.0,7.0.0)" />
     </ItemGroup>
 
     <ItemGroup>
