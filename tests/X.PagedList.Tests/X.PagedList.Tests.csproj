@@ -21,6 +21,7 @@
       <PackageReference Include="System.Net.Http" Version="4.3.4" />
       <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
         <ProjectReference Include="..\..\src\X.PagedList\X.PagedList.csproj" />
+        <ProjectReference Include="..\..\src\X.PagedList.Mvc.Core\X.PagedList.Mvc.Core.csproj" />
     </ItemGroup>
 
 </Project>
