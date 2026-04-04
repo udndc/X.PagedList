@@ -1,12 +1,14 @@
-﻿<Solution>
+<Solution>
   <Folder Name="/examples/">
     <Project Path="examples\Example.DAL\Example.DAL.csproj" />
     <Project Path="examples\Example.Website\Example.Website.csproj" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src\X.PagedList.EF\X.PagedList.EF.csproj" Type="Classic C#" />
-    <Project Path="src\X.PagedList.EntityFramework\X.PagedList.EntityFramework.csproj" Type="Classic C#" />
-    <Project Path="src\X.PagedList.Mvc.Core\X.PagedList.Mvc.Core.csproj" Type="Classic C#" />
+    <Project Path="src/X.PagedList.Serialization.JsonNet/X.PagedList.Serialization.JsonNet.csproj" />
+    <Project Path="src/X.PagedList.Serialization.SystemTextJson/X.PagedList.Serialization.SystemTextJson.csproj" />
+    <Project Path="src\X.PagedList.EF\X.PagedList.EF.csproj" />
+    <Project Path="src\X.PagedList.EntityFramework\X.PagedList.EntityFramework.csproj" />
+    <Project Path="src\X.PagedList.Mvc.Core\X.PagedList.Mvc.Core.csproj" />
     <Project Path="src\X.PagedList\X.PagedList.csproj" />
     <File Path="src\Directory.Build.props" />
   </Folder>
