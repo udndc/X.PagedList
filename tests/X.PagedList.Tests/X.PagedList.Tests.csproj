@@ -22,6 +22,8 @@
       <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
         <ProjectReference Include="..\..\src\X.PagedList\X.PagedList.csproj" />
         <ProjectReference Include="..\..\src\X.PagedList.Mvc.Core\X.PagedList.Mvc.Core.csproj" />
+        <ProjectReference Include="..\..\src\X.PagedList.Serialization.SystemTextJson\X.PagedList.Serialization.SystemTextJson.csproj" />
+        <ProjectReference Include="..\..\src\X.PagedList.Serialization.JsonNet\X.PagedList.Serialization.JsonNet.csproj" />
     </ItemGroup>
 
 </Project>
