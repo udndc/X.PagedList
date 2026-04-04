@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Title>X.PagedList.Serialization.SystemTextJson</Title>
+        <Description>System.Text.Json serialization support for X.PagedList library</Description>
+        <LangVersion>default</LangVersion>
+        <TargetFrameworks>net6.0;net8.0;netstandard2.0</TargetFrameworks>
+        <PackageTags>paging pagedlist paged list serialization json system.text.json</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="" />
+        <None Include="LICENSE.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\X.PagedList\X.PagedList.csproj" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+        <PackageReference Include="System.Text.Json" Version="6.0.11" />
+    </ItemGroup>
+
+</Project>
