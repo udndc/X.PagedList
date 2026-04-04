@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Title>X.PagedList.Serialization.JsonNet</Title>
+        <Description>Json.NET (Newtonsoft.Json) serialization support for X.PagedList library</Description>
+        <LangVersion>default</LangVersion>
+        <TargetFrameworks>net6.0;net8.0;netstandard2.0</TargetFrameworks>
+        <PackageTags>paging pagedlist paged list serialization json newtonsoft json.net</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="" />
+        <None Include="LICENSE.md" Pack="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\X.PagedList\X.PagedList.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+</Project>
