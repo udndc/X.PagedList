@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="EntityFramework" Version="[6.3.0,7.0.0)" />
+        <PackageReference Include="EntityFramework" Version="[6.5.2, 7.0.0)" />
     </ItemGroup>
 
     <ItemGroup>
