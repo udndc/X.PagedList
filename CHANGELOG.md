@@ -14,6 +14,8 @@ Metadata and packaging release. No changes to the public API.
 - `SECURITY.md` with the supported versions and the private vulnerability
   reporting process (GitHub Security Advisories).
 - `SPONSORS.md` and the Tidelift entry in `.github/FUNDING.yml`.
+- `CONTRIBUTING.md` with build/test instructions, pull request rules and the
+  MIT inbound = outbound rule for contributions.
 - SourceLink (`Microsoft.SourceLink.GitHub`), deterministic builds and symbol
   packages (`.snupkg`) for all packages.
 - GitHub Actions: CI (build and test on push and pull request) and release
