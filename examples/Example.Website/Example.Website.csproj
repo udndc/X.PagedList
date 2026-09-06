@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
@@ -14,9 +14,9 @@
 
 <!--    For live packages -->
 <!--    <ItemGroup>-->
-<!--        <PackageReference Include="X.PagedList" Version="10.5.3"/>-->
-<!--        <PackageReference Include="X.PagedList.EF" Version="10.5.3"/>-->
-<!--        <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.3"/>-->
+<!--        <PackageReference Include="X.PagedList" Version="10.6.0"/>-->
+<!--        <PackageReference Include="X.PagedList.EF" Version="10.6.0"/>-->
+<!--        <PackageReference Include="X.PagedList.Mvc.Core" Version="10.6.0"/>-->
 <!--    </ItemGroup>-->
 
 </Project>

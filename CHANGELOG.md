@@ -36,7 +36,8 @@ Metadata and packaging release. No changes to the public API.
   (`X.PagedList.Mvc.Core`, `X.PagedList.EF`, `X.PagedList.EntityFramework`).
 - The Serialization packages ship the repository `LICENSE.md` instead of their
   own copies; Oleksandr Tsvirkun is listed in `Authors` of both packages.
-- The test project runs on `net8.0` and `net10.0`.
+- The test project runs on `net8.0` and `net10.0`; the example web site and
+  its data layer target `net10.0` with EF Core 10.
 - `GeneratePackageOnBuild` disabled; packages are produced by `dotnet pack`
   in the release workflow only.
 
