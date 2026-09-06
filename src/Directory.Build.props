@@ -3,33 +3,46 @@
     <PropertyGroup>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-        
+
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-        
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>x-pagedlist.png</PackageIcon>
+
         <Authors>Troy Goode, Andrew Gubskiy</Authors>
         <Copyright>Andrew Gubskiy © 2025</Copyright>
         <Company>Ukrainian .NET Developer Community</Company>
 
-        <Version>10.5.9</Version>
-        <AssemblyVersion>10.5.9</AssemblyVersion>
-        <FileVersion>10.5.9</FileVersion>
-        <PackageVersion>10.5.9</PackageVersion>
+        <!--
+          Default version for local builds. Release builds override it from the git tag
+          (v10.6.0 -> 10.6.0) via `dotnet build/pack -p:Version=...` in .github/workflows/release.yml.
+          AssemblyVersion, FileVersion and PackageVersion derive from Version automatically.
+        -->
+        <Version>10.6.0</Version>
 
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/dncuug/X.PagedList.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/udndc/X.PagedList</RepositoryUrl>
         <PackageProjectUrl>https://andrew.gubskiy.com/open-source</PackageProjectUrl>
+
+        <!-- SourceLink, deterministic builds and symbol packages -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <Deterministic>true</Deterministic>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
 
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>xpagedlist.snk</AssemblyOriginatorKeyFile>
 
-        <Nullable>enable</Nullable>       
-
-        <PackageIcon>x-pagedlist.png</PackageIcon>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="../../x-pagedlist.png" Pack="True" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     </ItemGroup>
 
 </Project>
