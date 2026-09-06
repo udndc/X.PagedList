@@ -2,14 +2,13 @@
 
     <PropertyGroup>
         <IsPackable>true</IsPackable>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>x-pagedlist.png</PackageIcon>
 
         <Authors>Troy Goode, Andrew Gubskiy</Authors>
-        <Copyright>Andrew Gubskiy © 2025</Copyright>
+        <Copyright>Andrew Gubskiy © 2026</Copyright>
         <Company>Ukrainian .NET Developer Community</Company>
 
         <!--

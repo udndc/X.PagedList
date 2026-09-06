@@ -15,8 +15,9 @@ get merged fastest.
 
 ## Building and testing
 
-Prerequisites: .NET SDK 10.0 or later (the solution uses the `.slnx` format)
-and the .NET 8 runtime for the test project.
+Prerequisites: .NET SDK 10.0 or later (the solution uses the `.slnx` format).
+The test project targets `net8.0` and `net10.0`, so both runtimes are needed to
+run the whole suite.
 
 ```bash
 dotnet restore X.PagedList.slnx
@@ -25,7 +26,8 @@ dotnet test tests/X.PagedList.Tests/X.PagedList.Tests.csproj -c Release
 ```
 
 If you only have the .NET 10 runtime installed, run the tests with
-`DOTNET_ROLL_FORWARD=Major dotnet test ...`.
+`DOTNET_ROLL_FORWARD=Major dotnet test ...` — the `net8.0` leg then runs on
+the .NET 10 runtime.
 
 The same steps run in CI (`.github/workflows/ci.yml`) on every pull request.
 

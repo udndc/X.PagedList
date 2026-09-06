@@ -1,0 +1,73 @@
+name: Bug report
+description: Something does not work as documented
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. A minimal reproduction is the single most useful thing you can provide.
+        Security issues: please use [private vulnerability reporting](https://github.com/udndc/X.PagedList/security/advisories/new) instead.
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      description: Which package is affected?
+      multiple: true
+      options:
+        - X.PagedList
+        - X.PagedList.Mvc.Core
+        - X.PagedList.EF
+        - X.PagedList.EntityFramework
+        - X.PagedList.Serialization.SystemTextJson
+        - X.PagedList.Serialization.JsonNet
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "10.6.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: tfm
+    attributes:
+      label: Target framework
+      description: The target framework of the application that consumes the package.
+      multiple: true
+      options:
+        - net10.0
+        - net9.0
+        - net8.0
+        - net6.0
+        - .NET Framework 4.x (X.PagedList.EntityFramework)
+        - Other (please specify below)
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: The smallest code sample that shows the problem. A link to a repository is fine too.
+      render: csharp
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the exception message and stack trace if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that helps (EF Core version, ASP.NET Core version, OS, whether it worked in a previous version).

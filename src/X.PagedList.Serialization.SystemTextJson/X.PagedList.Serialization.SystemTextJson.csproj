@@ -3,14 +3,16 @@
     <PropertyGroup>
         <Title>X.PagedList.Serialization.SystemTextJson</Title>
         <Description>System.Text.Json serialization support for X.PagedList library</Description>
+        <Authors>Troy Goode, Andrew Gubskiy, Oleksandr Tsvirkun</Authors>
+        <Copyright>Andrew Gubskiy, Oleksandr Tsvirkun © 2026</Copyright>
         <LangVersion>default</LangVersion>
-        <TargetFrameworks>net6.0;net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net8.0;net10.0;netstandard2.0</TargetFrameworks>
         <PackageTags>paging pagedlist paged list serialization json system.text.json</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="" />
-        <None Include="LICENSE.md" Pack="true" PackagePath="" />
+        <None Include="../../LICENSE.md" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/udndc/X.PagedList/security/advisories/new
+    about: Report a security issue privately. Please do not open a public issue for it.
+  - name: Documentation and usage questions
+    url: https://github.com/udndc/X.PagedList/wiki
+    about: How to use X.PagedList, X.PagedList.Mvc.Core and the other packages.
+  - name: Sponsor the project
+    url: https://github.com/sponsors/a-gubskiy
+    about: Corporate sponsors get priority triage and advance notice of breaking changes.

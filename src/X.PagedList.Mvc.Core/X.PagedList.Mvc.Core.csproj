@@ -5,7 +5,7 @@
         <Description>ASP.NET Core extensions for implementing paging in web applications.</Description>
 
         <LangVersion>default</LangVersion>
-        <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;net8.0;net10.0</TargetFrameworks>
 
         <PackageTags>paging pagedlist paged list web mvc</PackageTags>
     </PropertyGroup>

@@ -20,6 +20,11 @@ Metadata and packaging release. No changes to the public API.
   packages (`.snupkg`) for all packages.
 - GitHub Actions: CI (build and test on push and pull request) and release
   (pack and publish to NuGet.org on a `v*` tag, version taken from the tag).
+- `net10.0` target for `X.PagedList`, `X.PagedList.Mvc.Core`, `X.PagedList.EF`
+  (with EF Core 10), `X.PagedList.Serialization.SystemTextJson` and
+  `X.PagedList.Serialization.JsonNet`. Existing targets are unchanged.
+- Issue forms (YAML) for bug reports and feature requests with package,
+  version, target framework and minimal reproduction fields.
 
 ### Changed
 
@@ -29,5 +34,15 @@ Metadata and packaging release. No changes to the public API.
 - Package READMEs refreshed: sponsorship badges, "Support this project"
   section, package titles aligned with their NuGet package ids
   (`X.PagedList.Mvc.Core`, `X.PagedList.EF`, `X.PagedList.EntityFramework`).
+- The Serialization packages ship the repository `LICENSE.md` instead of their
+  own copies; Oleksandr Tsvirkun is listed in `Authors` of both packages.
+- The test project runs on `net8.0` and `net10.0`.
+- `GeneratePackageOnBuild` disabled; packages are produced by `dotnet pack`
+  in the release workflow only.
+
+### Removed
+
+- `.github/stale.yml` (configuration for the discontinued probot-stale app).
+- Markdown issue templates, replaced by issue forms.
 
 [10.6.0]: https://github.com/udndc/X.PagedList/compare/v10.5.9...v10.6.0
