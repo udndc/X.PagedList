@@ -8,9 +8,11 @@ name: Release
 # The package version is taken from the tag (v10.6.0 -> 10.6.0) and passed to
 # MSBuild as -p:Version, overriding the default in src/Directory.Build.props.
 #
-# Required secret: NUGET_API_KEY (Settings -> Secrets and variables -> Actions).
-# The key on NuGet.org should be scoped to the glob pattern "X.PagedList*"
-# with the "Push new packages and package versions" permission only.
+# Publishing uses NuGet Trusted Publishing (OIDC): no long-lived API key is
+# stored in the repository. A Trusted Publisher policy must exist on NuGet.org
+# for the package owner (andrey-gubskiy) pointing at udndc/X.PagedList and this
+# workflow file (release.yml), scoped to the glob pattern "X.PagedList*".
+# NuGet/login exchanges the GitHub OIDC token for a short-lived NuGet API key.
 
 on:
   push:
@@ -19,6 +21,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write # required to request the GitHub OIDC token for NuGet Trusted Publishing
 
 env:
   DOTNET_NOLOGO: true
@@ -79,11 +82,19 @@ jobs:
           done
           ls -1 ./artifacts
 
+      - name: NuGet login (Trusted Publishing)
+        id: nuget-login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        with:
+          user: andrey-gubskiy
+
       # dotnet nuget push uploads the matching .snupkg symbol package next to
       # each .nupkg automatically, so a single push publishes both.
       - name: Push to NuGet.org
+        env:
+          NUGET_API_KEY: ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
         run: >-
           dotnet nuget push ./artifacts/*.nupkg
-          --api-key ${{ secrets.NUGET_API_KEY }}
+          --api-key "$NUGET_API_KEY"
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate

@@ -19,7 +19,8 @@ Metadata and packaging release. No changes to the public API.
 - SourceLink (`Microsoft.SourceLink.GitHub`), deterministic builds and symbol
   packages (`.snupkg`) for all packages.
 - GitHub Actions: CI (build and test on push and pull request) and release
-  (pack and publish to NuGet.org on a `v*` tag, version taken from the tag).
+  (pack and publish to NuGet.org on a `v*` tag, version taken from the tag,
+  NuGet Trusted Publishing via OIDC instead of a stored API key).
 - `net10.0` target for `X.PagedList`, `X.PagedList.Mvc.Core`, `X.PagedList.EF`
   (with EF Core 10), `X.PagedList.Serialization.SystemTextJson` and
   `X.PagedList.Serialization.JsonNet`. Existing targets are unchanged.
