@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  build:
+    name: Build ${{ matrix.framework }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        framework: [ net6.0, net8.0 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # full history for SourceLink
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      # Each multi-targeted library is built for a single TFM so that a
+      # regression in one target framework is reported by its own job.
+      - name: Build libraries for ${{ matrix.framework }}
+        run: |
+          set -euo pipefail
+          for project in \
+            src/X.PagedList/X.PagedList.csproj \
+            src/X.PagedList.EF/X.PagedList.EF.csproj \
+            src/X.PagedList.Mvc.Core/X.PagedList.Mvc.Core.csproj \
+            src/X.PagedList.Serialization.JsonNet/X.PagedList.Serialization.JsonNet.csproj \
+            src/X.PagedList.Serialization.SystemTextJson/X.PagedList.Serialization.SystemTextJson.csproj
+          do
+            dotnet build "$project" -c Release -f "${{ matrix.framework }}"
+          done
+
+  test:
+    name: Test (full solution)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        run: dotnet restore X.PagedList.slnx
+
+      - name: Build
+        run: dotnet build X.PagedList.slnx -c Release --no-restore
+
+      - name: Test
+        run: dotnet test tests/X.PagedList.Tests/X.PagedList.Tests.csproj -c Release --no-build --logger "trx;LogFileName=test-results.trx"
